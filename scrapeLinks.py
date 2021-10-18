@@ -37,17 +37,29 @@ def scrape(urls, ifFilter = False):
 
     #in future grab all the script and maybe see if can find urls in that
     #grab all the a tags and li tags
+    ignorePatterns = ["", "#", None, "javascript:void(0);"]
     urldict = {}
-    for url in urls:
-        try:
-            response = requests.get(url, headers=headers)
-        except:
-            print(url, "would not connect")
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.text, 'lxml')
-        else:
-            print(url, " responded with ", response.status_code)
-        
+    domainNum = 1
+    for domain in urls:
+        print("Domain ", domainNum, " ", domain)
+        urldict[domain] = {}
+        for url in urls[domain]:
+            urldict[domain][url] = {"links" : []}
+            try:
+                response = requests.get(url, headers=headers, timeout=10)
+            except:
+                print(url, "would not connect")
+                urldict[domain][url]["links"].append("dead")
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.text, 'lxml')
+                for line in soup.find_all('a'):
+                    if line.get('href') not in ignorePatterns:
+                        urldict[domain][url]["links"].append(line.get('href'))
+                    #print(line.get('href'))
+            else:
+                urldict[domain][url]["Status Code"] = response.status_code
+        domainNum = domainNum + 1
+    return urldict
         #r = re.compile(r"(http://[^ ]+)")
         #r = re.compile(r"(http://[^ ]+)")
         #print( re.search("(?P<url>https?://[^\s]+)", response).group("url") )
@@ -63,26 +75,6 @@ def scrape(urls, ifFilter = False):
     #resp = requests.get(url, headers=headers)
     
 
-
-parser = argparse.ArgumentParser(description='Gets the Query Strings from list of urls')
-parser.add_argument('--filter', dest = 'iffilter', action='store_true')
-parser.add_argument('--noheader', dest = 'ifheader', action='store_false')
-parser.add_argument('ifile', type=argparse.FileType('r'), help='input list of urls in txt file without header')
-
-args = parser.parse_args()
-
-infile = args.ifile.name
-print(infile)
-try:
-    file = open(infile, 'r')
-    urlObj = json.load(file)
-except:
-    print('Input file not supported')
-    sys.exit(1)
-
-urls = list(urlObj.keys())
-scrape(urls, args.iffilter)
-print(len(urls))
 
 
 

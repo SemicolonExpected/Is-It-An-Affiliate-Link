@@ -1,14 +1,23 @@
+## getAffiliates.py
+
+run using `getAffiliates.py [listofurls.txt] --ignore [list of ignored domains.txt] --filter`
+
 ## getQueryStrings.py
+
+`--filter` filters out google trackers ie gclid, gclsrc by default. You can add or remove filtered out trackers on `line 16`
 
 Takes a textfile of urls and splits them into a dictionary of domains and a list of referer/referral ids pairs associated with the domain
 
 Dictionary format  url => [{rid => referral string}, {rid => referral string}]
 
-`--filter` filters out google trackers ie gclid, gclsrc by default. You can add or remove filtered out trackers on `line 17`
 
 ## scrapeLinks.py
 
-`--filter` filters out facebook and amazon links, we can also define other link patterns to filter out
+`scrape({host: [links]})`
+
+I set a timeout of 10 seconds just because with larger datasets it will take forever to run if I dont. There are some sites that take a whole minute to load. Because of this we can't tell what those sites are. 
+What I would like is to set up parallel computing over two cores to make this work a lot faster. Splitting it into quarters would actually make this managable. 
+<!-- `--filter` filters out facebook and amazon links, we can also define other link patterns to filter out -->
 
 ## Pipeline
 
@@ -37,7 +46,7 @@ urls.txt --> getQueryStrings --> check link for affiliate --> scrapeLinks unlabe
 
 sites with `search` or `convertri` in their names often were affiliate marketers. The former seems to try to monetize by getting users to click on the advertisement search results that they host. Most of these ad search results are from yahoo. This makes sense because google is known to crack down on advertisement fraud so they could not do this with google ads
 
-Interestingly sites with a `shop` or `store` subdomain did not seem to have many if any affiliates. I believe it is because affiliates like to sell one product, while the shop subdomain implies there is more than one item. Similarly `investors` as a subdomain hints at the site being a stonk site
+Interestingly sites with a `shop` or `store` subdomain did not seem to have many if any affiliates. I believe it is because affiliates like to sell one product, while the shop subdomain implies there is more than one item. `en` and `us` imply multiple sites based on locality/langauge so that is also likely not affiliates. Similarly `investors` as a subdomain hints at the site being a stonk site. `/collections/` usually is a retailer
 
 love-stories-magazine.com is a site that might be an affiliate marketting site for amourfeel.com??
 
@@ -54,6 +63,7 @@ if a link on a page has track in it, I think it is probably it is an affiliate l
 `wlg-scrty.com` is a tracking link
 
 One group of affiliates used outgoing links with a `track` subdomain on their domain. When clicked they open the real product's page in a new window.
+Another has `offer` as their subdomain. 
 
 
 <!--- 

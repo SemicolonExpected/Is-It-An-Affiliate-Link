@@ -46,7 +46,10 @@ urls.txt --> getQueryStrings --> check link for affiliate --> scrapeLinks unlabe
 
 sites with `search` or `convertri` in their names often were affiliate marketers. The former seems to try to monetize by getting users to click on the advertisement search results that they host. Most of these ad search results are from yahoo. This makes sense because google is known to crack down on advertisement fraud so they could not do this with google ads
 
-Interestingly sites with a `shop` or `store` subdomain did not seem to have many if any affiliates. I believe it is because affiliates like to sell one product, while the shop subdomain implies there is more than one item. `en` and `us` imply multiple sites based on locality/langauge so that is also likely not affiliates. Similarly `investors` as a subdomain hints at the site being a stonk site. `/collections/` usually is a retailer
+Interestingly sites with a `shop` or `store` subdomain did not seem to have many if any affiliates. I believe it is because affiliates like to sell one product, while the shop subdomain implies there is more than one item. `en` and `us` imply multiple sites based on locality/langauge so that is also likely not affiliates. Similarly `investors` as a subdomain hints at the site being a stonk site. `/collections/` usually is a retailer. Affiliates often wont have a `/careers/` page either because theyre not hiring.
+
+`digistore24.com` seem to be used a lot by the crowd that advertise free books/webinars. A lot of the sites have videos that say "WRNANIG: TIHS WLIL OLNY WROK FOR POELPE WHO CAN RAED TIHS" appealing to the user's pride implying that if this doesnt work they aren't intelligent. All of the sites that lead to the digistore url (and the digistore url) have the word "camp" in it.
+If there is an "earnings-disclaimer" it is almost certainly one of these webinars
 
 love-stories-magazine.com is a site that might be an affiliate marketting site for amourfeel.com??
 
@@ -61,6 +64,7 @@ love-stories-magazine.com is a site that might be an affiliate marketting site f
 `ep20trk.com` apparently potentially malicious content contacts this site
 if a link on a page has track in it, I think it is probably it is an affiliate link
 `wlg-scrty.com` is a tracking link
+`jinkoii.xyz`
 
 One group of affiliates used outgoing links with a `track` subdomain on their domain. When clicked they open the real product's page in a new window.
 Another has `offer` as their subdomain. 

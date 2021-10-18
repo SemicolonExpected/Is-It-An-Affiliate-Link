@@ -43,7 +43,7 @@ domains = aggregateDomains(urldict)
 '''
 If the ignored file is valid then we use that, otherwise we use the default list
 '''
-ignorePatterns = ["facebook", "amazon", ".yahoo.", ".google.", ".microsoft.", ".pubg.", ".tumblr.", "walmart", "mikmak", "opera.com", ".edu", "romwe", "woobox", ".peta.", "/info.", ".yelp.com", "heineken", "sonicdrivein"
+ignorePatterns = ["facebook", "amazon", ".yahoo.", ".google.", ".microsoft.", ".pubg.", ".tumblr.", "walmart", "mikmak", "opera.com", ".edu", "romwe", "woobox", ".peta.", "/info.", ".yelp.com", "heineken", "sonicdrivein", "goumikids.com", ".us."
                   ".hm.com", "/us.", "/en.", "/shop.", "/store.", "/investors.", "otter.ai", ".adobe.com", ".yelp.com"
                   ".hasbro.com", ".worldofwarships.com", "fabletics", ".fiverr.com", ".washingtonpost.com", "shopify.", 
                   ".spotify.", "strolleria", "spartanarmorsystems", ".fs.com", "hotel", "/invest.", "blissy", ".se.com"
@@ -58,7 +58,7 @@ ignorePatterns = ["facebook", "amazon", ".yahoo.", ".google.", ".microsoft.", ".
                   "decked.com", "groovyhistory", "edx.org", "entropiauniverse", "contactlensking", "christianfilipina.com", 
                   "birchgold", "typeform.com", "starstable", "filmsupply", "audible", "dixxon", "apexlegends", "xeroshoes", 
                   "disney", "pamperedchef", "groovelife.com", "lumedeodorant", "getlambs.com", "learcapital", "consolidatedcredit",
-                  ".movie", "invisasox"] 
+                  ".movie", "invisasox", "krisp.ai"] 
                     #some of these are mainstream while others are just things I know for a fact are not affiliate marketing through labelling
 '''
 For the ignorelist We need a way to sift the domains that are definitely NOT affiliate marketers from everything else
@@ -157,9 +157,23 @@ Then remove the ones who just link to themselves, after removing the sites that 
 linkPatterns = {
         "/game/" : {"attributes":{"game": True, "affiliate": False, "affiliateCertainty":95}},
         "/collections/": {"attributes":{"affiliate": False, "affiliateCertainty":95}},
+        "/patient/": {"attributes":{"medical": True, "affiliate": False, "affiliateCertainty":95}},
+        "/product/": {"attributes":{"retailer": True, "affiliate": False, "affiliateCertainty":95}},
+        "/products/": {"attributes":{"retailer": True, "affiliate": False, "affiliateCertainty":95}},
+        "/solutions/": {"attributes":{"software": True, "affiliate": False, "affiliateCertainty":95}},
+        "earnings-disclaimer": {"attributes":{"webinar-or-book": True, "webinarCertainty": 100, "affiliate": False, 
+                                  "affiliateCertainty":50}},
+        "digistore24": {"attributes":{"webinar-or-book": True, "webinarCertainty": 100, "affiliate": False, 
+                                  "affiliateCertainty":50}},
+        "clickfunnels": {"attributes":{"webinar-or-book": True, "webinarCertainty": 100, "affiliate": False, 
+                                  "affiliateCertainty":50}},
         "shopify" : {"attributes":{"game": True, "affiliate": False, "affiliateCertainty":95}},
+        "/careers/" : {"attributes":{"game": True, "affiliate": False, "affiliateCertainty":95}},
+        "?affiliate_id": {"attributes":{"affiliate": True, "affiliateCertainty": 100}},
         "horoscope" : {"attributes":{"affiliate": False, "affiliateCertainty":95}},
         "clickbank": {"attributes":{"affiliate": True, "affiliateCertainty": 100}},
+        "jinkoii.xyz": {"attributes":{"affiliate": True, "fraud": "Ad-hijacker", "affiliateCertainty": 100}},
+        "?aff_id": {"attributes":{"affiliate": True, "fraud": "Ad-hijacker", "affiliateCertainty": 100}},
         "htrackhq": {"attributes":{"affiliate": True, "fraud": "Ad-hijacker", "affiliateCertainty": 100}},
         "/offer.": {"attributes":{"affiliate": True, "fraud": "Ad-hijacker", "affiliateCertainty": 100}},
         "ep20trk": {"attributes":{"affiliate": True, "affiliateCertainty": 100}}

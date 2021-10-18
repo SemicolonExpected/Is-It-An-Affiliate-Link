@@ -37,7 +37,7 @@ def scrape(urls, ifFilter = False):
 
     #in future grab all the script and maybe see if can find urls in that
     #grab all the a tags and li tags
-    ignorePatterns = ["", "#", None, "javascript:void(0);"]
+    ignorePatterns = ["", "#", None, "javascript:void(0)"]
     urldict = {}
     domainNum = 1
     for domain in urls:
